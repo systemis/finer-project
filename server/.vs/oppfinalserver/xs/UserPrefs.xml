@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{5FA31E28-B6B8-4170-B468-C7410B0C2628}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="oppfinalserver/Controllers/AuthController.cs">
+    <Files>
+      <File FileName="oppfinalserver/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="oppfinalserver/appsettings.json" Line="1" Column="1" />
+      <File FileName="oppfinalserver/Models/DUser.cs" Line="10" Column="15" />
+      <File FileName="oppfinalserver/Controllers/WeatherForecastController.cs" Line="20" Column="1" />
+      <File FileName="oppfinalserver/Controllers/AuthController.cs" Line="15" Column="10" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="oppfinalserver" expanded="True">
+            <Node name="oppfinalserver" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" selected="True" />
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.oppfinalserver PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/thinh/Projects/main/finner/finner.csproj": {}
+    "/Users/thinh/Desktop/thinh/python/cse/OPP/final-project/finer/server/finner/finner.csproj": {}
   },
   "projects": {
-    "/Users/thinh/Projects/main/finner/finner.csproj": {
+    "/Users/thinh/Desktop/thinh/python/cse/OPP/final-project/finer/server/finner/finner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thinh/Projects/main/finner/finner.csproj",
+        "projectUniqueName": "/Users/thinh/Desktop/thinh/python/cse/OPP/final-project/finer/server/finner/finner.csproj",
         "projectName": "finner",
-        "projectPath": "/Users/thinh/Projects/main/finner/finner.csproj",
+        "projectPath": "/Users/thinh/Desktop/thinh/python/cse/OPP/final-project/finer/server/finner/finner.csproj",
         "packagesPath": "/Users/thinh/.nuget/packages/",
-        "outputPath": "/Users/thinh/Projects/main/finner/obj/",
+        "outputPath": "/Users/thinh/Desktop/thinh/python/cse/OPP/final-project/finer/server/finner/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/thinh/.nuget/NuGet/NuGet.Config"
@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.14.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"

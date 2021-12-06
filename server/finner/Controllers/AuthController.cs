@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Web;
 using finner.Models;
+using finner.Utils;
+using finner.Services; 
 
 namespace finner.Controllers
 {
@@ -16,12 +18,14 @@ namespace finner.Controllers
     public class AuthController : Controller
     {
         private static string Secret = "ERMN05OPLoDvbTTa/QkqLNMI7cPLguaRyHzyg7n5qNBVjQmtBhz4SzYh4NBVCXi3KJHlSXKP+oi2+bXr6CUYTR==";  
+        private UserDb userDb;
 
         private readonly ILogger<AuthController> _logger;
 
         public AuthController(ILogger<AuthController> logger)
         {
             _logger = logger;
+            userDb = new UserDb();
         }
 
         public IActionResult Index()
@@ -67,15 +71,30 @@ namespace finner.Controllers
             user.FirstName = "pham";
             user.HashPassword = "dsdfds";
             
-            loginResponse.user = user; 
+            loginResponse.user = user;
             loginResponse.Token = token; 
 
             return loginResponse; 
         }
 
         [HttpPost("register")]
-        public void Register(RegisterRequest register){
-            
+        public RegisterResponse Register(RegisterRequest register){
+            System.Console.WriteLine(register.email);
+            var exists = userDb.getUserByEmail(register.email);
+            if(exists != null) {
+                return null; 
+            }
+
+            User user = new User(); 
+            user.Email = register.email; 
+            user.FirstName = register.firstName;
+            user.LastName = register.lastName;
+            user.HashPassword = HashPassword.makeHashPassword(register.password);
+
+            var insertedResult = userDb.addUser(user);
+            RegisterResponse response =  new RegisterResponse();
+            response.user = insertedResult;
+            return response;
         }
 
         [HttpPost("info")] 

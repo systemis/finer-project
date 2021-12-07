@@ -1,5 +1,5 @@
-#region Assembly MongoDB.Driver, Version=2.14.1.0, Culture=neutral, PublicKeyToken=null
 // MongoDB.Driver.dll
+#region Assembly MongoDB.Driver, Version=2.14.1.0, Culture=neutral, PublicKeyToken=null
 #endregion
 
 using MongoDB.Driver;

@@ -1,11 +1,10 @@
-using MongoDB.Bson; 
 using MongoDB.Driver;
-using MongoDB.Driver.Linq; 
 using finner.Models; 
+using finner.Interface;
 
 namespace finner.Services
 {
-    public class UserDb
+    public class UserDb : IUserDb
     {
         private readonly IMongoCollection<User> collection; 
         public UserDb(){

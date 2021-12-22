@@ -28,5 +28,8 @@ namespace finner.Services
         public Product getProductByQrCode(string qrCode) {
             return collection.Find(element => element.QrCode == qrCode).FirstOrDefault();
         }
+        public Product getProductById(string id) {
+            return collection.Find(element => element.Id == id).FirstOrDefault();
+        }
     }
 }

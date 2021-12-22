@@ -14,6 +14,9 @@ namespace finner.Services
             productDb  = new ProductDb(); 
             collection = driver.Database.GetCollection<Store>("stores");
         }
+        public Store getStoreById(string id) {
+            return collection.Find(element => element.Id == id).FirstOrDefault(); 
+        }
         public List<Store> getStoreList()
         {
             return collection.Find(element => true).ToList(); 

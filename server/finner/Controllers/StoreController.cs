@@ -10,10 +10,14 @@ namespace finner.Controllers
     {
         private readonly ILogger<StoreController> _logger;
         private readonly StoreDb storeDb;
+        private readonly ProductDb productDb; 
+        private readonly UserDb userDb; 
         public StoreController(ILogger<StoreController> logger)
         {
             _logger = logger;
             storeDb = new StoreDb();
+            productDb = new ProductDb();
+            userDb = new UserDb(); 
         }
 
         public IActionResult Index()
@@ -37,6 +41,50 @@ namespace finner.Controllers
             }
             
             return response;
+        }
+
+        [HttpGet]
+        public GetStoreResponse GetStore()
+        {
+            List<Store> store_list = storeDb.getStoreList();
+            GetStoreResponse response = new GetStoreResponse(); 
+            response.store_list = store_list; 
+            return response; 
+        }
+
+        [HttpPost("/payment")]
+        public PaymentResponse payment(PaymentRequest paymentRequest) {
+            var paymentResponse = new PaymentResponse();
+            try {
+                string storeId = paymentRequest.storeId; 
+                if (storeDb.getStoreById(storeId) == null) {
+                    throw new ArgumentException("Store is's exists !");
+                }
+
+                string productId = paymentRequest.productId;
+                if (productDb.getProductById(productId) == null) {
+                    throw new ArgumentException("Product is's exists !");   
+                }
+
+                string userId = paymentRequest.userId;
+                if (userDb.getUserById(userId) == null) {
+                    throw new ArgumentException("Cannot find any user with this user");
+                }
+
+                Order order = new Order(); 
+                order.BuyerId = userId; 
+                order.StoreId = storeId; 
+                order.ProductId = productId;
+
+                paymentResponse.status = "SUCCESS"; 
+                paymentResponse.responseMsg = "Payment successfully!";
+                paymentResponse.order = order; 
+                return paymentResponse;
+            } catch (Exception e) {
+                paymentResponse.status = "FAILED"; 
+                paymentResponse.responseMsg =  e.ToString(); 
+                return paymentResponse;
+        }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

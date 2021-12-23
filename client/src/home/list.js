@@ -1,5 +1,12 @@
-import React from 'react';
-import { Text, View, Image, FlatList, TouchableHighlight, ScrollView } from 'react-native';
+import _ from 'lodash';
+import React, { useState, useEffect, useMemo } from 'react';
+import { 
+  View, 
+  Image, 
+  TouchableHighlight, 
+  ScrollView, 
+  StyleSheet, 
+} from 'react-native';
 import { connect } from 'react-redux';
 
 import BigCLogo from '../../assets/bigc.png'
@@ -7,9 +14,7 @@ import VinmartLogo from '../../assets/vinmart.png'
 import Kmartlogo from '../../assets/kmart.png'
 import CoopmartLoogo from '../../assets/coopmart.png'
 
-import API from '../api/api.main';
-
-const ListItem = props => {
+const StoreItem = props => {
   return (
     <TouchableHighlight
       style={{ flex: 1, }}
@@ -19,89 +24,57 @@ const ListItem = props => {
       }}>
       <View>
         <Image
-          source={{ uri: props.image }}
+          source={props.image}
           style={{ width: 150, height: 150, borderRadius: 20, resizeMode: 'cover' }} />
       </View>
     </TouchableHighlight>
   )
 }
 
-class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      list: [],
-      stores: [
-        { name: 'BigC', image: BigCLogo },
-        { name: 'KMart', image: Kmartlogo },
-        { name: 'CoopMart', image: CoopmartLoogo },
-        { name: 'VinMart', image: VinmartLogo },
-      ]
-    }
+
+const ListScreen = (props) => {
+  const [storeList, setStoreList] = useState([]);
+
+  useEffect(() => {
+    setStoreList([
+      { image: BigCLogo, name: 'BigC', id: '29dedc-002dcs-xx2s'}, 
+      { image: VinmartLogo, name: 'Vinmart', id: '29dedc-00dcs-xx2s'}, 
+      { image: Kmartlogo, name: 'Kmart', id: '29dedc-002dcs-x2s'}, 
+      { image: CoopmartLoogo, name: 'Coopmart', id: '29dedc-02dcs-xx2s'}, 
+    ]);
+  }, []);
+
+  const handleClick = (item) => {
+    return props.navigation.navigate('Scanner', { 
+      storeName: item.name, 
+      storeId: item.id 
+    });
   }
-
-  getList() {
-    API.getAllStoresList(this.props.token)
-      .catch(error => console.log('error when get stores list', error))
-      .then(result => {
-        this.props.dispatch({ type: 'change-store-list', value: result });
-        this.renderList(result);
-      })
-  }
-
-  componentDidMount() {
-    this.getList();
-  }
-
-  renderList(storesList = []) {
-    var row = [];
-    var list = [];
-    var j = 0;
-
-    storesList.map((item, index) => {
-      j++;
-      row.push(item);
-      if (j == 2 || (index == storesList.length - 1 && j == 1)) {
-        list.push(row);
-        j = 0;
-        row = [];
-      }
-
-      if (index == storesList.length - 1) {
-        this.setState({ list: list });
-      }
+  
+  const Layout = useMemo(() => {
+    const rows = _.chunk(storeList, 2);
+    return rows.map((item, index) => {
+      return (
+        <View key={`store-row-${index}`} style={styles.rowContainer}> 
+          {item.map((childItem, childIndex) => (
+            <StoreItem 
+              key={`store-item-${childIndex}`}
+              image={childItem.image} 
+              navigate={() => handleClick(childItem)}/>
+          ))}
+        </View>
+      );   
     })
-  }
+  }, [storeList])
 
-  render() {
-    return (
-      <View style={{
-        paddingTop: 70,
-        paddingRight: 25,
-        paddingLeft: 25,
-      }}>
-
-        <ScrollView style={{ width: '100%', height: '100%' }} showsVerticalScrollIndicator={false}>
-          <View style={{}}>
-            {
-              this.state.list.map((row, index) => (
-                <View key={`item-list-row-${index}`} style={{ flexDirection: 'row', paddingBottom: 20 }}>
-                  {row.map((item, j) => {
-                    return (
-                      <ListItem key={`-das-${j}-listitem`} image={item.image} navigate={() => {
-                        this.props.navigation.navigate('Scanner', { storeName: item.name, storeKey: item.key });
-                      }} />
-                    )
-                  })}
-                </View>
-              ))
-            }
-          </View>
-        </ScrollView>
-      </View>
-    )
-  }
-}
+  return (
+    <View style={styles.pageContainer}>
+      <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+        {Layout}
+      </ScrollView>
+    </View>
+  )
+};
 
 export default connect(state => {
   return {
@@ -109,4 +82,20 @@ export default connect(state => {
     navigation: state.navigation,
     storesList: state.storesList,
   }
-})(List);
+})(ListScreen);
+
+const styles = StyleSheet.create({
+  pageContainer: {
+    paddingTop: 70,
+    paddingRight: 25,
+    paddingLeft: 25,
+  }, 
+  scrollContainer: {
+    width: '100%', 
+    height: '100%'
+  }, 
+  rowContainer: {
+    flexDirection: 'row', 
+    paddingBottom: 50, 
+  }, 
+});

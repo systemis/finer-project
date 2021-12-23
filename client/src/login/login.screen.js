@@ -72,8 +72,7 @@ class LoginScreen extends React.Component {
 
             <Text style={styles.mainTitle}>Welcome to app </Text>
             <Text style={styles.appIntro}>
-              Ứng dụng thanh toán trực tiếp tại gian hàng
-              {/* giúp bạn tiết kiệm thời gian lên tới 40% */}
+              Ứng dụng thanh toán trực tiếp tại gian hàng, giúp bạn tiết kiệm thời gian lên tới 40%
           </Text>
             <View style={styles.buttonContainer}>
               <TouchableHighlight

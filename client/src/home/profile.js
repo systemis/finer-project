@@ -78,7 +78,7 @@ class Profile extends React.Component {
                 borderLeftWidth: 0.25,
                 alignItems: 'center',
               }}>
-                <Text>{this.props.info.History.length}</Text>
+                <Text>{this.props.info.Orders.length}</Text>
                 <Text>Đơn hàng</Text>
               </View>
             </View>

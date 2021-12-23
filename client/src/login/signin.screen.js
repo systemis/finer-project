@@ -90,14 +90,13 @@ class SignInScreen extends React.Component {
   }
 
   async login() {
-    this.props.navigation.navigate('Home', { result: '' })
-    return; 
-    this.progressing(true);
-    _user.authenticated(this.state.username, this.state.password,
-      async (result, error) => {
-        this.progressing(false);
-        error ? console.log('error') : await this.done(result)
-      })
+    this.props.navigation.navigate('Home', { result: {} })
+    // this.progressing(true);
+    // _user.authenticated(this.state.username, this.state.password,
+    //   async (result, error) => {
+    //     this.progressing(false);
+    //     error ? console.log('error') : await this.done(result)
+    //   })
   }
 
   progressing(value) {

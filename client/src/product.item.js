@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { FormatPrice } from './api/format';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default ProductItem = (props) => {
   return (
@@ -24,8 +23,16 @@ export default ProductItem = (props) => {
         <View style={styles.productControlChild}>
           <TouchableHighlight
             underlayColor='transparent'
-            onPress={() => props.delete()}>
-            <Icon name='delete-outline' color='#000' size={18} />
+            onPress={() => props.onDelete()}
+            style={{fontSize:20}}>
+            <Text>-</Text>
+          </TouchableHighlight>
+          <Text>{props.info.count}</Text>
+          <TouchableHighlight
+            underlayColor='transparent'
+            onPress={() => props.onPlus()}
+            style={{fontSize:20}}>
+            <Text>+</Text>
           </TouchableHighlight>
         </View>
       </View>

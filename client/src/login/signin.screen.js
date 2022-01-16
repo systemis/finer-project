@@ -110,6 +110,7 @@ class SignInScreen extends React.Component {
           <TextInput
             placeholder='username'
             onChangeText={text => this.setState({ username: text })}
+            defaultValue='thinh'
             style={{
               ...StyleSheet.flatten(styles.textField),
               backgroundColor: '#b9b9b97a',
@@ -120,6 +121,7 @@ class SignInScreen extends React.Component {
             placeholder='password'
             secureTextEntry={true}
             onChangeText={text => this.setState({ password: text })}
+            defaultValue='`1'
             style={{
               ...StyleSheet.flatten(styles.textField),
               backgroundColor: '#b9b9b97a',

@@ -6,5 +6,6 @@ namespace finner.Interface
     {
         Order getOrderById(string id);
         Order addOrder(Order order);
+        Order updateOrder(Order order);
     }
 }

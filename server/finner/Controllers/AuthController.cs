@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 using System.Web;
 using finner.Models;
 using finner.Utils;
@@ -39,26 +39,32 @@ namespace finner.Controllers
         [HttpPost("login")]
         public LoginResponse Login(LoginRequest login)
         {
-            System.Console.WriteLine("return ");
-             var loginResponse = new LoginResponse { };
-            LoginRequest loginrequest = new LoginRequest { };
-            loginrequest.Email = login.Email.ToLower();
-            loginrequest.Password = login.Password;
+            LoginResponse response = new LoginResponse();
+            try {
+                var loginResponse = new LoginResponse { };
+                LoginRequest loginRequest = new LoginRequest { };
+                loginRequest.Email = login.Email.ToLower();
+                loginRequest.Password = login.Password;
+                
+                var exists = userDb.getUserByEmail(loginRequest.Email);
+                if (exists == null) {
+                    throw new ArgumentException("User is not exists ");
+                }
+                
+                if (loginRequest.Password != exists.HashPassword) {
+                    throw new ArgumentException("Password is not match");
+                }
 
-            System.Console.WriteLine(loginrequest.Email);
+                string token = GenerateToken(loginRequest.Email);
 
-            string token = GenerateToken(loginrequest.Email);
-
-            User user = new User(); 
-            user.Email = "thinh@gmail.com";
-            user.LastName = "thinh";
-            user.FirstName = "pham";
-            user.HashPassword = "dsdfds";
-            
-            loginResponse.user = user;
-            loginResponse.Token = token; 
-
-            return loginResponse; 
+                User user = exists; 
+                user.HashPassword = "";
+                loginResponse.Token = token; 
+                return loginResponse; 
+            } catch (Exception e) {
+                response.responseMsg = e.ToString();
+                return response;
+            }
         }
 
         [HttpPost("register")]

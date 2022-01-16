@@ -1,0 +1,90 @@
+[
+   {
+      "barcode": "9786048962296",
+      "count": 0,
+      "image": "https://i5.walmartimages.com/asr/2084737a-5e73-4b9d-a3b6-b1e864edf2ac.d569755a854ca538903ac21b66b3034c.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
+      "name": "Lego Box",
+      "price": 8900000, 
+      "storeId": "29dedc-002dcs-xx2s"
+   }, 
+   {
+      "barcode": "978604896223396",
+      "count": 0,
+      "image": "https://www.lego.com/cdn/cs/set/assets/blt6631c3930abc6526/21324.jpg?fit=bounds&format=jpg&quality=80&width=1500&height=1500&dpr=1",
+      "name": "Lego Box",
+      "price": 890000,
+      "storeId": "29dedc-002dcs-xx2s"
+   },
+   {
+      "barcode": "97863892892296",
+      "count": 0,
+      "image": "https://chiaki.vn/upload/product/2016/12/may-bay-dieu-khien-tu-xa-mini-m440-15122016015840.png",
+      "name": "Máy Bay Điều Khiển Từ Xa Mini M44",
+      "price": 500000,
+      "storeId": "29dedc-002dcs-xx2s"
+   },
+   {
+      "barcode": "97863892892297",
+      "count": 0,
+      "image": "https://product.hstatic.net/200000338811/product/sku-11_4224d3e09ae44380baed9d544e2e43ce_grande.png",
+      "name": "Hộp cà phê coffe house",
+      "price": 120000,
+      "storeId": "29dedc-002dcs-xx2s"
+   },
+   {
+      "barcode": "97863292392597",
+      "count": 0,
+      "image": "https://media.ex-cdn.com/EXP/media.homeaz.vn/files/content/2020/11/23/cay-thong-noel-trang-tri-cay-thong-noel-mini-homeaz-04-1553.jpg",
+      "name": "Cây thông noel",
+      "price": 400000,
+      "storeId": "29dedc-002dcs-xx2s"
+   },
+   {
+      "barcode": "97863292392347",
+      "count": 0,
+      "image": "https://cdn.nguyenkimmall.com/images/detailed/694/10047417-smart-tivi-lg-4k-43-inch-43un7000pta-1_vwxa-k0.jpg",
+      "name": "TV LG 4k",
+      "price": 40000000,
+      "storeId": "29dedc-002dcs-xx2s"
+    },
+   {
+      "barcode": "97862791392347",
+      "count": 0,
+      "image": "https://file.hstatic.net/200000144777/file/apple_iphone13_colors_09142021_big.jpg.large_c3a69d0ee4774b12a58836b1fba2334b.jpg",
+      "name": "Iphone 13",
+      "price": 28000000,
+      "storeId": "29dedc-002dcs-xx2s"
+   }, 
+   {
+      "barcode": "97862791392347",
+      "count": 0,
+      "image": "https://macone.vn/wp-content/uploads/2021/10/macbook-pro-16-inch-2021-silver.png",
+      "name": "Macbook pro 16 M1",
+      "price": 52000000,
+      "storeId": "29dedc-02dcs-xx2s"
+   },
+   {
+      "barcode": "97862791392347",
+      "count": 0,
+      "image": "https://cdn2.jomashop.com/media/catalog/product/cache/fde19e4197824625333be074956e7640/g/u/gucci-ladies-disney-mickey-print-bucket-bag-602691-1oiaw-9887.jpg?width=546&height=546",
+      "name": "GuCi Bag",
+      "price": 122500000,
+      "storeId": "29dedc-02dcs-xx2s"
+   },
+   {
+      "barcode": "97862791392347",
+      "count": 0,
+      "image": "https://cdn2.jomashop.com/media/catalog/product/cache/fde19e4197824625333be074956e7640/f/e/fendi-blue-cat-eye-sunglasses-ff-0327s-0807-52-ff-0327s-0807-52.jpg?width=546&height=546",
+      "name": "Blue Cat Eye Ladies Sunglasses FF",
+      "price": 2000000,
+      "storeId": "29dedc-02dcs-xx2s"
+    },
+   {
+      "barcode": "97862791392347",
+      "count": 0,
+      "image": "https://cdn2.jomashop.com/media/catalog/product/cache/fde19e4197824625333be074956e7640/b/u/burberry-black-x-econylr-parka-coat-brand-size-10-us-size-6-8026148.jpg?width=546&height=546",
+      "name": "Black X Econyl® Parka Coat",
+      "price": 10000000,
+      "storeId": "29dedc-02dcs-xx2s"
+    }
+]

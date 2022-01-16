@@ -18,5 +18,17 @@ namespace finner.Services
             collection.InsertOne(order);
             return order; 
         }
+        public Order updateOrder(Order order) {
+            try {
+                var result = collection.ReplaceOneAsync(item => item.Id == order.Id, order);
+                if (result == null) {
+                  throw new ArgumentException("Update order failed !");
+                }
+                return order; 
+            } catch (Exception e) {
+                System.Console.WriteLine(e.Message);
+                return null;
+            }
+        }
     }
 }

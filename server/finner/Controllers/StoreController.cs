@@ -84,7 +84,7 @@ namespace finner.Controllers
                 paymentResponse.status = "FAILED"; 
                 paymentResponse.responseMsg =  e.ToString(); 
                 return paymentResponse;
-        }
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

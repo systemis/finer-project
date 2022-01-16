@@ -16,5 +16,9 @@ namespace finner.Models
         public string Price { get; set; }
         [BsonElement("buyerId")]
         public string BuyerId { get; set; }
+        [BsonElement("checkerId")]
+        public string checkerId { get; set; }
+        [BsonElement("check")]
+        public bool check { get; set; }
     }
 }

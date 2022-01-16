@@ -7,11 +7,11 @@ namespace finner.Models
         {
 
             this.Token = "";
-            this.responseMsg = new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.Unauthorized };
+            this.responseMsg = ""; 
         }
 
         public string Token { get; set; }
-        public HttpResponseMessage responseMsg { get; set; }
+        public string responseMsg { get; set; }
 
         public User user { get; set; }
     }

@@ -8,6 +8,8 @@ import Product from '../../api/product';
 import { FormatPrice } from '../../api/format';
 import ProductItem from '../../product.item';
 import errosMess from '../../../api/errors_messagers';
+import Helpers from '../../utils/';
+import HeaderQuater from '../../api/headquater';
 import {
   Text,
   View,
@@ -139,14 +141,18 @@ const ScannerScreen = (props) => {
     setTotal(total - price);
   }
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
+    if (!total) {
+      return; 
+    }
+    
     progressing(true);
     let date = new Date(Date.now());
     let info = {
       total, 
       storeName,
       products, 
-      storeKey, 
+      storeId, 
       date: {
         hour: date.getHours(),
         minutes: date.getMinutes(),
@@ -156,16 +162,20 @@ const ScannerScreen = (props) => {
       }
     }
 
-    Product.payment(props.token, info, (result, error) => {
-      progressing(false);
-      if (error) {
-        return Alert.alert(error == errosMess.NOT_ENOUGH_PICES ? error_not_enough_pices : error);
-      } else {
-        navigation.navigate('Billament', {
-          bill: result
-        })
-      }
-    }) 
+    const bill = await Helpers.handlePayment(info); 
+    progressing(false);
+    console.log(bill);
+    props.navigation.navigate('Billament', { bill });
+    // Product.payment(props.token, info, (result, error) => {
+    //   progressing(false);
+    //   if (error) {
+    //     return Alert.alert(error == errosMess.NOT_ENOUGH_PICES ? error_not_enough_pices : error);
+    //   } else {
+    //     navigation.navigate('Billament', {
+    //       bill: result
+    //     })
+    //   }
+    // }) 
   }
 
   const handleBarCodeScanned = ({ type, data }) => {
@@ -184,6 +194,26 @@ const ScannerScreen = (props) => {
     handleScanExit(); 
   }
 
+  const handlePlus = (_index) => {
+    const updated = products.map((item, index) => {
+      if (_index === index) {
+        return { ...item, count: item.count + 1 }
+      }
+      return item; 
+    })
+    setProducts(updated);
+  }
+
+  const handleRemove = (_index) => {
+    const updated = products.map((item, index) => {
+      if (_index === index) {
+        return { ...item, count: item.count > 0 ? item.count - 1 : item.count }
+      }
+      return item; 
+    })
+    setProducts(updated);
+  }
+
   useEffect(() => {
     var total = 0; 
     products.forEach(product => total += product.price * product.count);
@@ -193,10 +223,12 @@ const ScannerScreen = (props) => {
   useEffect(() =>  {
     const storeId = props.navigation.getParam('storeId', '-LrK0VqGtLFp6nLhv3Gq');
     const storeName = props.navigation.getParam('storeName', 'BigC');
+    const productList = HeaderQuater.getProductList(storeId)
 
+    // props.storeList.forEach((item) => item.id === storeId && setProducts(item.products))
     setStoreId(storeId);
     setStoreName(storeName); 
-    props.storeList.forEach((item) => item.id === storeId && setProducts(item.products))
+    setProducts(productList);
   }, []);
 
   return (
@@ -221,10 +253,12 @@ const ScannerScreen = (props) => {
               {products.map((item, index) => {
                 return (
                   <ProductItem 
-                    info={item}
                     key={`product-item-${index}`}
+                    info={item}
                     keyExtractor={() => Math.random() * 100}
-                    delete={() => handleDelete(index)} />
+                    delete={() => handleDelete(index)} 
+                    onPlus={() => handlePlus(index)}
+                    onDelete={() => handleRemove(index)}/>
                 )
               })}
             </ScrollView>

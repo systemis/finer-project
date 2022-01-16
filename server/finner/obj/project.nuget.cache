@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UpDGPyxCERO1Rk89BDA17M/6v+LAWCDxzYQBBd9djtA0/wdHl25O+5prAb+XikMMiWxjwHOoShbWei8BTHn+/A==",
+  "dgSpecHash": "bTmGdfum1WlB5WJTAnUBS3f0gmfhYL78QfpWRJa7kJ+WWQ8YJlDhPyHDEm9rtaFdaYuE9bLbG1RpTH0+VMU16Q==",
   "success": true,
   "projectFilePath": "/Users/thinh/Desktop/thinh/python/cse/OPP/final-project/finer/server/finner/finner.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "/Users/thinh/.nuget/packages/microsoft.identitymodel.logging/6.15.0/microsoft.identitymodel.logging.6.15.0.nupkg.sha512",
     "/Users/thinh/.nuget/packages/microsoft.identitymodel.tokens/6.15.0/microsoft.identitymodel.tokens.6.15.0.nupkg.sha512",
     "/Users/thinh/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/thinh/.nuget/packages/microsoft.typescript.msbuild/4.5.3/microsoft.typescript.msbuild.4.5.3.nupkg.sha512",
     "/Users/thinh/.nuget/packages/mongodb.bson/2.14.1/mongodb.bson.2.14.1.nupkg.sha512",
     "/Users/thinh/.nuget/packages/mongodb.driver/2.14.1/mongodb.driver.2.14.1.nupkg.sha512",
     "/Users/thinh/.nuget/packages/mongodb.driver.core/2.14.1/mongodb.driver.core.2.14.1.nupkg.sha512",

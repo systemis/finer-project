@@ -13,6 +13,7 @@ import styles from '../login/fields/styles';
 import API from './api.addmin';
 import DB from '../api/db';
 import ErrorMess from '../../api/error_messagers_release';
+import * as quater from '../api/headquater';
 
 class LoginScreen extends React.Component {
   constructor(props) {
@@ -31,13 +32,15 @@ class LoginScreen extends React.Component {
 
   async login() {
     this.progressing(true);
-    API.authenticated('BigC', this.state.username, this.state.password, async (result, error) => {
-      this.progressing(false);
-      if (error) return Alert.alert('Error !', ErrorMess.sigin(error));
-      await DB.saveToken('addmin', result.token);
-      this.props.dispatch({ type: 'change-addmin-info', value: result });
-      this.props.navigation.navigate('AddminHome');
-    })
+    const info = quater.adminAuthenticated(this.state.username);
+    await DB.saveToken('addmin', info.username);
+    this.progressing(false);
+    this.props.dispatch({ type: 'change-addmin-info', value: info });
+    this.props.navigation.navigate('AddminHome');
+    // API.authenticated('BigC', this.state.username, this.state.password, async (result, error) => {
+    //   this.progressing(false);
+    //   if (error) return Alert.alert('Error !', ErrorMess.sigin(error));
+    // })
   }
 
   render() {
@@ -51,6 +54,8 @@ class LoginScreen extends React.Component {
         <TextInput
           placeholder='username'
           onChangeText={text => this.setState({ username: text })}
+          disabled={true}
+          value="admin"
           style={{
             ...StyleSheet.flatten(styles.textField),
             backgroundColor: '#b9b9b97a',
@@ -61,6 +66,8 @@ class LoginScreen extends React.Component {
           placeholder='password'
           secureTextEntry={true}
           onChangeText={text => this.setState({ password: text })}
+          value="admin"
+          disabled={true}
           style={{
             ...StyleSheet.flatten(styles.textField),
             backgroundColor: '#b9b9b97a',

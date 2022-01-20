@@ -164,7 +164,7 @@ const ScannerScreen = (props) => {
 
     const bill = await Helpers.handlePayment(info); 
     progressing(false);
-    console.log(bill);
+    // console.log(bill);
     props.navigation.navigate('Billament', { bill });
     // Product.payment(props.token, info, (result, error) => {
     //   progressing(false);

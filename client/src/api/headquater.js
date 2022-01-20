@@ -31,3 +31,14 @@ export default {
       return productData.filter((item) => item.storeId === storeId);
    }
 }
+
+export function fetchProductList(storeId) {
+   
+}
+
+export function adminAuthenticated(username) {
+   return {
+      username, 
+      storeName: 'BigC', 
+   }
+}

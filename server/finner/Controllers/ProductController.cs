@@ -61,5 +61,19 @@ namespace finner.Controllers
             
             return response;
         }
+
+        [HttpGet]
+        public GetStoreProductResponse GetStoreProduct(GetStoreProduct getStoreProduct)
+        {
+            GetStoreProductResponse response = new GetStoreProductResponse();
+            try {
+                var productList = productDb.getStoreProduct(getStoreProduct.storeId);
+                response.productList = productList;
+            } catch(Exception e) {
+                response.responseMsg = e.ToString();
+            }
+            
+            return response;
+        }
     }
 }

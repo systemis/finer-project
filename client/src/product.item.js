@@ -1,43 +1,38 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { FormatPrice } from './api/format';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default ProductItem = (props) => {
-  return (
-    <View style={styles.productItemContainer}>
-      <View style={styles.productShowImage}>
-        <Image
-          style={styles.productImage}
-          source={{ uri: props.info.image }} />
-      </View>
-      <View style={styles.productShowName}>
-        <Text style={styles.productName}>{props.info.name}</Text>
-        <Text style={styles.productPrice}>
-          {FormatPrice((
-            props.info.price
-          ).toString())}
-        </Text>
-        <Text style={styles.productcounttext}>x{props.info.count}</Text>
-      </View>
-      <View style={styles.productControlContainer}>
-        <View style={styles.productControlChild}>
-          <TouchableHighlight
-            underlayColor='transparent'
-            onPress={() => props.onDelete()}
-            style={{fontSize:20}}>
-            <Text>-</Text>
-          </TouchableHighlight>
-          <Text>{props.info.count}</Text>
-          <TouchableHighlight
-            underlayColor='transparent'
-            onPress={() => props.onPlus()}
-            style={{fontSize:20}}>
-            <Text>+</Text>
-          </TouchableHighlight>
+export default class ProductItem extends React.Component {
+  render() {
+    return (
+      <View style={styles.productItemContainer}>
+        <View style={styles.productShowImage}>
+          <Image
+            style={styles.productImage}
+            source={{ uri: this.props.info.image }} />
+        </View>
+        <View style={styles.productShowName}>
+          <Text style={styles.productName}>{this.props.info.name}</Text>
+          <Text style={styles.productPrice}>
+            {FormatPrice((
+              this.props.info.price
+            ).toString())}
+          </Text>
+          <Text style={styles.productcounttext}>x{this.props.info.count}</Text>
+        </View>
+        <View style={styles.productControlContainer}>
+          <View style={styles.productControlChild}>
+            <TouchableHighlight
+              underlayColor='transparent'
+              onPress={() => this.props.delete()}>
+              <Icon name='delete-outline' color='#000' size={18} />
+            </TouchableHighlight>
+          </View>
         </View>
       </View>
-    </View>
-  )
+    )
+  }
 }
 
 const styles = StyleSheet.create({

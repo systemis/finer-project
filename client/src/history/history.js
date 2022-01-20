@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
   Text,
@@ -34,7 +34,7 @@ const Item = props => (
             }}
             source={{ uri: props.info.products[0].image }} />
         </View>
-        <View style={{ flex: 3, paddingLeft: 20, paddingTop: 20 }}>
+        <View style={{ flex: 3 }}>
           <Text>{props.info.products[0].name}</Text>
           <View>
             <Text style={{ width: '100%', textAlign: 'right' }}>
@@ -127,6 +127,6 @@ class History extends React.Component {
 export default connect(state => {
   return {
     token: state.info.token,
-    History: state.info.Orders,
+    History: state.info.History,
   }
 })(History);

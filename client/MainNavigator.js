@@ -1,6 +1,8 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import _DB from './src/api/db';
 
@@ -25,32 +27,42 @@ import AddminHomeScreen from './src/addmin/home.addmin';
 import CheckBill from './src/addmin/bill.addmin'
 
 const Navigator = createStackNavigator({
+  // Home: HomeScreen,
+  // Splash: SplashScreen,
+  // Credit: CreditScreen,
+  // Credit: CreditScreen,
+  // Payment: PaymentScreen,
+  // CheckBill: CheckBill,
+  // AddminHome: AddminHomeScreen,
+  // AddminLogin: AddminLoginScreen,
+  // ProfileEdit: ProfileEditScreen,
+
+
+  // Home: HomeScreen,
+  // History: HistoryScreen,
+  // Billament: QrcodeScreen,
+  // BillInfo: BillInfoScreen,
   // Scanner: Scanner,
-  Splash: SplashScreen,
-  Credit: CreditScreen,
-  Credit: CreditScreen,
-  Payment: PaymentScreen,
-  CheckBill: CheckBill,
-  AddminHome: AddminHomeScreen,
-  AddminLogin: AddminLoginScreen,
-  ProfileEdit: ProfileEditScreen,
 
+  // Login: LoginScreen,
+  // SignIn: SignIn,
+  // SignUp: SignUp,
+  // OTP: OTPScreen,
+  // Phone: PhoneScreen,
 
-  Home: HomeScreen,
-  History: HistoryScreen,
-  Billament: QrcodeScreen,
-  BillInfo: BillInfoScreen,
-  Scanner: Scanner,
-
-  Login: LoginScreen,
-  SignIn: SignIn,
-  SignUp: SignUp,
-  OTP: OTPScreen,
-  Phone: PhoneScreen,
-
-  AdSignIn: AdSignIn,
+  // AdSignIn: AdSignIn,
 })
 
-const AppContent = createAppContainer(Navigator);
+const Stack = createNativeStackNavigator();
+
+export function Content() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default AppContent;

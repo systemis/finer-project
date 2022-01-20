@@ -31,7 +31,7 @@ const Item = props => (
         }}
       />
     </View>
-    <View style={{ flex: 3, paddingLeft: 20, paddingTop: 20 }}>
+    <View style={{ flex: 3 }}>
       <Text>{props.info.name}</Text>
       <View>
         <Text style={{ width: '100%', textAlign: 'right' }}>
@@ -58,7 +58,7 @@ class BillInfo extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({ info: this.props.navigation.getParam('info') });
+    this.setState({ info: this.props.route.params.info });
   }
 
   render() {

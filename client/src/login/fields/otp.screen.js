@@ -64,11 +64,11 @@ export default class OTPScreen extends React.Component {
     var code = this.state.code + number.toString();
 
     // checkout 
-    this.setState({ code }); console.log(this.props.navigation.getParam('code'));
+    this.setState({ code }); console.log(this.props.route.params.code);
     if (code.length == 4) {
-      if (code == this.props.navigation.getParam('code')) {
+      if (code == this.props.route.params.code) {
         Alert.alert('Success')
-        this.props.navigation.getParam('callback')(this.props.navigation.getParam('phone'));
+        this.props.route.params.callback(this.props.route.params.phone);
       } else {
         Alert.alert('Failed');
       }
@@ -77,7 +77,7 @@ export default class OTPScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ ...StyleSheet.flatten(styles.container), backgroundColor: this.props.navigation.getParam('background', '#000') }}>
+      <View style={{ ...StyleSheet.flatten(styles.container), backgroundColor: this.props.params.background | '#000' }}>
         <View style={styles.main}>
           <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
             <Cow title={this.state.code.split('')[0]} right={20} />

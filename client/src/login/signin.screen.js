@@ -90,13 +90,12 @@ class SignInScreen extends React.Component {
   }
 
   async login() {
-    this.props.navigation.navigate('Home', { result: {} })
-    // this.progressing(true);
-    // _user.authenticated(this.state.username, this.state.password,
-    //   async (result, error) => {
-    //     this.progressing(false);
-    //     error ? console.log('error') : await this.done(result)
-    //   })
+    this.progressing(true);
+    _user.authenticated(this.state.username, this.state.password,
+      async (result, error) => {
+        this.progressing(false);
+        error ? console.log(error) : await this.done(result)
+      })
   }
 
   progressing(value) {
@@ -110,7 +109,6 @@ class SignInScreen extends React.Component {
           <TextInput
             placeholder='username'
             onChangeText={text => this.setState({ username: text })}
-            defaultValue='thinh'
             style={{
               ...StyleSheet.flatten(styles.textField),
               backgroundColor: '#b9b9b97a',
@@ -121,7 +119,6 @@ class SignInScreen extends React.Component {
             placeholder='password'
             secureTextEntry={true}
             onChangeText={text => this.setState({ password: text })}
-            defaultValue='`1'
             style={{
               ...StyleSheet.flatten(styles.textField),
               backgroundColor: '#b9b9b97a',

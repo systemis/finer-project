@@ -78,7 +78,7 @@ class SignUpScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ ...StyleSheet.flatten(styles.container), backgroundColor: this.props.navigation.getParam('background', '#371442c4') }}>
+      <View style={{ ...StyleSheet.flatten(styles.container), backgroundColor: this.props.route.params.background | '#371442c4' }}>
         <View style={styles.main}>
           <TextInput
             placeholder='Full name'

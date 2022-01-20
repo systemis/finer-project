@@ -3,7 +3,9 @@ class Socket {
   constructor() {
     // this.host = 'http://localhost:19009';
     this.strs = { onDoneCheckBill: 'onDoneCheckBill', }
-    this.host = 'https://spmarker.herokuapp.com';
+    // this.host = 'https://spmarker.herokuapp.com';
+    // this.host = 'http://localhost:19009/';
+    this.host = 'https://finer-server.herokuapp.com/';
     this.io = Client(this.host);
   }
 

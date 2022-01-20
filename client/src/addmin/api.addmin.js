@@ -2,7 +2,9 @@ class API {
   constructor() {
     // let host = 'http://localhost:3000/';
     // let host = 'https://superautospmaket.herokuapp.com/';
-    let host = 'https://spmarker.herokuapp.com/';
+    // let host = 'https://spmarker.herokuapp.com/';
+    // let host = 'http://localhost:19009/';
+    let host = 'https://finer-server.herokuapp.com/';
 
     this.settings = {
       headers: {

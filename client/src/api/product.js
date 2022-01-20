@@ -2,7 +2,9 @@ class Product {
   constructor() {
     // this.host = 'https://superautospmaket.herokuapp.com';
     // this.host = 'http://localhost:19009';
-    this.host = 'https://spmarker.herokuapp.com';
+    // this.host = 'https://spmarker.herokuapp.com';
+    // this.host = 'http://localhost:19009/';
+    this.host = 'https://finer-server.herokuapp.com';
 
     this.settings = {
       headers: {
@@ -31,6 +33,7 @@ class Product {
   }
 
   findProductByBarcode(storename, barcode, fn) {
+    console.log(`${this.urls.getinfobarcode}/${storename}/${barcode}`);
     fetch(`${this.urls.getinfobarcode}/${storename}/${barcode}`, {
       method: 'POST',
       ...this.settings

@@ -15,6 +15,8 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 import db from '../api/db';
 import apiAddmin from './api.addmin';
 
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjEyLCJpbWFnZSI6Imh0dHBzOi8vZW5jcnlwdGVkLXRibjAuZ3N0YXRpYy5jb20vaW1hZ2VzP3E9dGJuJTNBQU5kOUdjUTRrQkY1VmZOeC1KS21Wa0Q1NVB1bXdLUmZFWlJOVllrYTNHZUlMdXdZU1J0S19FQXAiLCJsYXN0dGltZSI6IjIwMTgtMTAtMjBUMTQ6MjU6MDkuMjU3WiIsInBhc3N3b3JkIjoiMSIsInBob25lIjoiMDkwNTY2NzcyIiwic3RvcmVLZXkiOiItTHJLMFZxTE1JMzllcHNHUm1XNCIsInN0b3JlTmFtZSI6IkJpZ0MiLCJ1c2VybmFtZSI6InR1YW5waGFtMTI5MyIsImtleSI6Ii1MdlFvRV9kT2wzdjlHSjFlOUdlIiwiaWF0IjoxNjQyNjc4NjUwLCJleHAiOjE2NDI4MTg2NTB9.s8BbI204bpmwEOTx5TNZ5LUneFJeAfP8lmotPGryLQg";
+
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -48,9 +50,14 @@ class HomeScreen extends React.Component {
 
   getReckoning() {
     this.progressing(true);
-    apiAddmin.getReckoning(this.props.token, this.props.addminInfo.storeKey, this.state.code, (result, error) => {
+    console.log(this.props.token);
+    console.log(this.props.token, this.props.addminInfo.storeKey, this.state.code);
+    apiAddmin.getReckoning(token, this.props.addminInfo.storeKey, this.state.code, (result, error) => {
       this.progressing(false);
-      if (error) return;
+      if (error) {
+        console.log(error);
+        return
+      }
 
       this.props.navigation.navigate('CheckBill', { info: { ...result, code: this.state.code } });
     })

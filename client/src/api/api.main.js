@@ -1,7 +1,9 @@
 class MainAPI {
   constructor() {
     // let host = 'https://superautospmaket.herokuapp.com/';
-    let host = 'https://spmarker.herokuapp.com/';
+    // let host = 'https://spmarker.herokuapp.com/';
+    // let host = 'http://localhost:19009/';
+    let host = 'https://finer-server.herokuapp.com/';
     this.settings = {
       headers: {
         Accept: 'application/json',

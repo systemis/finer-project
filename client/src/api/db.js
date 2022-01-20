@@ -26,26 +26,4 @@ export default new class DBManager {
       return null;
     }
   }
-
-  async addUser({ payload }) {
-    var resource = await this.getUserList() || []; 
-    resource.push(payload);
-  }
-
-  async getUserInfo({ username }) {
-    var resource = await AsyncStorage.getItem('user_list');
-    if (!resource) {
-      return null;
-    }
-    resource = JSON.parse(resource);
-    return resource.filter(item => item.username === username)[0];
-  }
-
-  async getUserList() {
-    var resource = await AsyncStorage.getItem('user_list');
-    if (!resource) {
-      return null; 
-    } 
-    return JSON.parse(resource);
-  }
 }

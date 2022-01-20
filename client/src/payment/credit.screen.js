@@ -78,7 +78,7 @@ class CreditScreen extends React.Component {
 
   update() {
     let { goBack } = this.props.navigation;
-    this.props.navigation.getParam('editPayment')('credit', this.state.paymentInfo)
+    this.props.route.params.editPayment('credit', this.state.paymentInfo)
       .catch(error => { Alert.alert(`Error ${error}`, 'Please try again !'); goBack() })
       .then(result => {
         goBack();

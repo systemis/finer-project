@@ -60,8 +60,8 @@ class OTPScreen extends React.Component {
     user.sendOTP(this.state.phone, (code, error) => {
       this.progressing(false);
       this.props.navigation.navigate('OTP', {
-        info: this.props.navigation.getParam('info'),
-        callback: this.props.navigation.getParam('callback'),
+        info: this.props.route.params.info,
+        callback: this.props.route.params.callback,
         phone: this.state.phone,
         background: this.state.background,
         code,
@@ -70,7 +70,7 @@ class OTPScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ background: this.props.navigation.getParam('background', '#000') });
+    this.setState({ background: this.props.route.background || '#000' });
   }
 
   add(number) {

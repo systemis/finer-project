@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import API from './api.addmin';
 
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjEyLCJpbWFnZSI6Imh0dHBzOi8vZW5jcnlwdGVkLXRibjAuZ3N0YXRpYy5jb20vaW1hZ2VzP3E9dGJuJTNBQU5kOUdjUTRrQkY1VmZOeC1KS21Wa0Q1NVB1bXdLUmZFWlJOVllrYTNHZUlMdXdZU1J0S19FQXAiLCJsYXN0dGltZSI6IjIwMTgtMTAtMjBUMTQ6MjU6MDkuMjU3WiIsInBhc3N3b3JkIjoiMSIsInBob25lIjoiMDkwNTY2NzcyIiwic3RvcmVLZXkiOiItTHJLMFZxTE1JMzllcHNHUm1XNCIsInN0b3JlTmFtZSI6IkJpZ0MiLCJ1c2VybmFtZSI6InR1YW5waGFtMTI5MyIsImtleSI6Ii1MdlFvRV9kT2wzdjlHSjFlOUdlIiwiaWF0IjoxNjQyNjc4NjUwLCJleHAiOjE2NDI4MTg2NTB9.s8BbI204bpmwEOTx5TNZ5LUneFJeAfP8lmotPGryLQg";
+
 const ProductItem = props => (
   <View style={{
     flexDirection: 'row',
@@ -181,7 +183,8 @@ class BillAddmin extends React.Component {
   }
 
   checked() {
-    API.checkdoneReckoning(this.props.token, this.state.info.code, this.state.checked ? 2000 : 0, (result, error) => {
+    console.log(token, this.state.info.code, this.state.checked);
+    API.checkdoneReckoning(token, this.state.info.code, this.state.checked ? 2000 : 0, (result, error) => {
       console.log(result, error);
 
       if (result) return this.setState({ info: { ...this.state.info, checked: true } });
@@ -190,7 +193,8 @@ class BillAddmin extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ info: this.props.navigation.getParam('info', this.state.info) });
+    console.log(this.props.route.params.info);
+    this.setState({ info: this.props.route.params.info });
   }
 
   render() {
